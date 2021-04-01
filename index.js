@@ -5,7 +5,7 @@ require('dotenv').config()
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectID;
 
-const port = 5000 || process.env.port;
+const port = 5000;
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.1znel.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const app = express()
@@ -65,4 +65,4 @@ app.get('/', (req, res) => {
   res.send('Hello server side World!')
 })
 
-app.listen(port)
+app.listen(process.env.PORT || port)
